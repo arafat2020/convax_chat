@@ -1,9 +1,10 @@
 import React from 'react'
 
-function MainLayout({children}:{children:React.ReactNode}) {
+function MainLayout({sidebar, main}:{sidebar:React.ReactNode, main:React.ReactNode}) {
   return (
-    <div className='w-screen h-screen'>
-      {children}
+    <div className='w-screen h-screen flex gap-3 bg-slate-950'>
+      {sidebar}
+      {main}
     </div>
   )
 }

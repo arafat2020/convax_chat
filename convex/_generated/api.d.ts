@@ -13,6 +13,16 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as schema_channel from "../schema/channel.js";
+import type * as schema_conversation from "../schema/conversation.js";
+import type * as schema_directMessage from "../schema/directMessage.js";
+import type * as schema_friend from "../schema/friend.js";
+import type * as schema_member from "../schema/member.js";
+import type * as schema_message from "../schema/message.js";
+import type * as schema_server from "../schema/server.js";
+import type * as schema_singleChat from "../schema/singleChat.js";
+import type * as schema_singleRoomMessage from "../schema/singleRoomMessage.js";
+import type * as schema_user from "../schema/user.js";
 import type * as userProile from "../userProile.js";
 
 /**
@@ -24,6 +34,16 @@ import type * as userProile from "../userProile.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  "schema/channel": typeof schema_channel;
+  "schema/conversation": typeof schema_conversation;
+  "schema/directMessage": typeof schema_directMessage;
+  "schema/friend": typeof schema_friend;
+  "schema/member": typeof schema_member;
+  "schema/message": typeof schema_message;
+  "schema/server": typeof schema_server;
+  "schema/singleChat": typeof schema_singleChat;
+  "schema/singleRoomMessage": typeof schema_singleRoomMessage;
+  "schema/user": typeof schema_user;
   userProile: typeof userProile;
 }>;
 export declare const api: FilterApi<

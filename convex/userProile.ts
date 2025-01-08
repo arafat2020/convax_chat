@@ -12,9 +12,13 @@ export const getProfile = query({
 
 export const createProfile = mutation({
     args: {
-        clerkId: v.string()
+        clerkId: v.string(),
+        status: v.union(
+            v.literal("active"),
+            v.literal("inactive")
+        )
     },
-    handler: (ctx, { clerkId }) => {
-        return ctx.db.insert("userProfile", { clerkId })
+    handler: (ctx, { clerkId, status }) => {
+        return ctx.db.insert("userProfile", { clerkId, status })
     }
 })
