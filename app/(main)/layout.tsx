@@ -1,12 +1,15 @@
+"use client"
 import React from 'react'
+import Modal from '@/components/Modal'
 
-function MainLayout({sidebar, main}:{sidebar:React.ReactNode, main:React.ReactNode}) {
+function childrenLayout({ sidebar, children }: { sidebar: React.ReactNode, children: React.ReactNode }) {
   return (
-    <div className='w-screen h-screen flex gap-3 bg-slate-950'>
-      {sidebar}
-      {main}
+    <div suppressHydrationWarning className='w-screen h-screen flex gap-3 bg-slate-950'>
+        {sidebar}
+        {children}
+        <Modal/>
     </div>
   )
 }
 
-export default MainLayout
+export default childrenLayout
