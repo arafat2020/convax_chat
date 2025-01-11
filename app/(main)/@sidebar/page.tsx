@@ -9,7 +9,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { useModal } from '@/app/hooks/useModal';
+import { useModal } from '@/app/_hooks/useModal';
 
 
 function Sidebar() {
@@ -34,9 +34,9 @@ function Sidebar() {
                                     <FaPlus
                                         role='button'
                                         className='w-10 h-10 p-3 bg-cyan-700 rounded-full'
-                                        onClick={()=>setComponent({
-                                            component:"test",
-                                            title:"test"
+                                        onClick={() => setComponent({
+                                            component: "test",
+                                            title: "test"
                                         })}
                                     />
                                 </TooltipTrigger>
@@ -49,10 +49,17 @@ function Sidebar() {
 
                 </div>
                 <div className="flex-grow">
-                    <div className='w-full flex justify-between items-center space-x-2 p-2'>
-                        <UserButton />
-                        <p className='flex-grow line-clamp-1 text-slate-100 font-sans font-semibold'>{user?.username ? user.username : `${user?.firstName} ${user?.lastName}`}</p>
-                    </div>
+                    {
+                        isLoaded && !user ? <div className='w-full flex justify-between items-center space-x-2 p-2 animate-pulse'>
+                            <div className="h-6 w-6 bg-gray-700 rounded"></div>
+                            <div className='flex-grow h-4 bg-gray-700 rounded'></div>
+                        </div> :
+                            <div className='w-full flex justify-between items-center space-x-2 p-2'>
+                                <UserButton />
+                                <p className='flex-grow line-clamp-1 text-slate-100 font-sans font-semibold'>{user?.username ? user.username : `${user?.firstName} ${user?.lastName}`}</p>
+                            </div>
+                    }
+
                 </div>
             </div>
         </div>

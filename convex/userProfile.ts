@@ -7,7 +7,7 @@ export const getProfile = query({
     },
     handler: (ctx, args) => {
         return ctx.db.query("userProfile").filter(q => q.eq(q.field("clerkId"), args.clerkId)).unique()
-    }
+    },
 })
 
 export const createProfile = mutation({

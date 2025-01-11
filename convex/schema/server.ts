@@ -8,7 +8,7 @@ export const server = defineTable({
     avatar: v.string(),
     inviteCode: v.string(),
     member: v.array(v.id("member")),
-    channel: v.array(v.id("channel")),
+    channel: v.optional(v.array(v.id("channel"))),
     createdAt: v.string(),
     updatedAt: v.string()
 }).index("by_user",["ownerId"])

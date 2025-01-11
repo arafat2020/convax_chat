@@ -23,7 +23,9 @@ import type * as schema_server from "../schema/server.js";
 import type * as schema_singleChat from "../schema/singleChat.js";
 import type * as schema_singleRoomMessage from "../schema/singleRoomMessage.js";
 import type * as schema_user from "../schema/user.js";
-import type * as userProile from "../userProile.js";
+import type * as server from "../server.js";
+import type * as upload from "../upload.js";
+import type * as userProfile from "../userProfile.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -44,7 +46,9 @@ declare const fullApi: ApiFromModules<{
   "schema/singleChat": typeof schema_singleChat;
   "schema/singleRoomMessage": typeof schema_singleRoomMessage;
   "schema/user": typeof schema_user;
-  userProile: typeof userProile;
+  server: typeof server;
+  upload: typeof upload;
+  userProfile: typeof userProfile;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

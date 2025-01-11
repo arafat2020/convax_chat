@@ -10,7 +10,7 @@ import {
     DialogFooter
 } from "@/components/ui/dialog"
 import { Button } from './ui/button'
-import { useModal } from '@/app/hooks/useModal'
+import { useModal } from '@/app/_hooks/useModal'
 
 
 function Modal() {
