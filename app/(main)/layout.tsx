@@ -1,14 +1,20 @@
 "use client"
 import React from 'react'
 import Modal from '@/components/Modal'
+import UserContext from '@/components/UserContext'
+import { Toaster } from '@/components/ui/toaster'
 
 function childrenLayout({ sidebar, children }: { sidebar: React.ReactNode, children: React.ReactNode }) {
   return (
-    <div suppressHydrationWarning className='w-screen h-screen flex gap-3 bg-slate-950'>
+
+    <UserContext>
+      <div suppressHydrationWarning className='w-screen h-screen flex gap-3 bg-slate-950'>
         {sidebar}
         {children}
-        <Modal/>
-    </div>
+        <Toaster/>
+        <Modal />
+      </div>
+    </UserContext>
   )
 }
 

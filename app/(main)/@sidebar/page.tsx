@@ -10,6 +10,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { useModal } from '@/app/_hooks/useModal';
+import CreateServer from '@/components/CreateServer';
 
 
 function Sidebar() {
@@ -35,7 +36,7 @@ function Sidebar() {
                                         role='button'
                                         className='w-10 h-10 p-3 bg-cyan-700 rounded-full'
                                         onClick={() => setComponent({
-                                            component: "test",
+                                            component: <CreateServer/>,
                                             title: "test"
                                         })}
                                     />
