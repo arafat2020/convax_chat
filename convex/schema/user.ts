@@ -6,5 +6,7 @@ export const userProfile = defineTable({
     status: v.union(
         v.literal("active"),
         v.literal("inactive")
-    )
+    ),
+    userName: v.optional(v.string()),
+    profilePic: v.optional(v.string())
 }).index("byClerkId", ["clerkId"])

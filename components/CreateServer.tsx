@@ -7,29 +7,55 @@ import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { upload } from '@/action/upload';
 import { createServer } from '@/action/createServer';
+import { Id } from '@/convex/_generated/dataModel';
+import { useModal } from '@/app/_hooks/useModal';
+import { Loader2 } from 'lucide-react';
 
 function CreateServer() {
     const { profileId } = useUserLocal();
-
+    const { reset } = useModal()
     const [serverName, setServerName] = useState<string>('');
-    const [serverImage, setServerImage] = useState<File | null>(null);
+    const [serverImage, setServerImage] = useState<File | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
     const { toast } = useToast()
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.stopPropagation();
         event.preventDefault();
-        if (!serverName || !serverImage) {
+        setLoading(true)
+        try {
+            if (!serverName || !serverImage) {
+                toast({
+                    title: "Bad request",
+                    description: "All required field must be given"
+                })
+                return
+            }
+            const url = await upload(serverImage)
+            if (!url.url) {
+                console.log(url);
+                return
+            }
+            try {
+                await createServer({
+                    profileId: profileId as Id<"userProfile">,
+                    serverImage: url.url,
+                    serverName
+                })
+                reset()
+            } catch (error) {
+                toast({
+                    title: "Something went wrong",
+                    description: `Error: ${error}`
+                })
+            }
+        } catch (error) {
             toast({
-                title: "Bad request",
-                description:"All required field must be given"
+                title: "Something went wrong",
+                description: `Error: ${error}`
             })
-            return
+        } finally {
+            setLoading(false)
         }
-        const url = await upload(serverImage)
-        if (!url) {
-            console.log(url);
-            return
-        }
-        await createServer(serverName, url)
     };
 
     return (
@@ -58,8 +84,8 @@ function CreateServer() {
                     }}
                 />
             </div>
-            <Button variant="secondary" type="submit">
-                Create Server
+            <Button disabled={loading} variant="secondary" type="submit">
+                {loading ? <Loader2 className='animate-spin w-6 h-6' /> : "Create Server"}
             </Button>
         </form>
     );

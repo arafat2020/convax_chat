@@ -1,11 +1,14 @@
+"use client"
 import React from 'react'
+import ErrorBoundary from './_components/ErrorBoundary'
+import Home from './_components/Home'
 
-function Home() {
+function HomePage() {
   return (
-    <div className='flex-grow h-hull '>
-
-    </div>
+    <ErrorBoundary>
+      <Home/>
+    </ErrorBoundary>
   )
 }
 
-export default Home
+export default HomePage

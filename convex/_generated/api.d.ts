@@ -13,6 +13,8 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as friend from "../friend.js";
+import type * as member from "../member.js";
 import type * as schema_channel from "../schema/channel.js";
 import type * as schema_conversation from "../schema/conversation.js";
 import type * as schema_directMessage from "../schema/directMessage.js";
@@ -36,6 +38,8 @@ import type * as userProfile from "../userProfile.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  friend: typeof friend;
+  member: typeof member;
   "schema/channel": typeof schema_channel;
   "schema/conversation": typeof schema_conversation;
   "schema/directMessage": typeof schema_directMessage;

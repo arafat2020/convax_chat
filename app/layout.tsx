@@ -4,6 +4,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ThemeProvider } from "@/components/Them";
 import getOrCreateUserProfile from "@/action/getOrCreateUser";
+import { isReady } from "@/action/isReady";
+import UserContext from "@/components/UserContext";
+
 
 
 
@@ -17,7 +20,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await await getOrCreateUserProfile()
+  await getOrCreateUserProfile()
   return (
     <html suppressHydrationWarning lang="en">
       <body className="w-screen h-screen">
@@ -28,7 +31,11 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <ClerkProvider dynamic>
-            <ConvexClientProvider>{children}</ConvexClientProvider>
+            <ConvexClientProvider>
+              <UserContext>
+                {children}
+              </UserContext>
+            </ConvexClientProvider>
           </ClerkProvider>
         </ThemeProvider>
       </body>
