@@ -12,7 +12,7 @@ function Logo() {
                 path.style.strokeDasharray = `${length}`; // Set the stroke-dasharray to the path length
                 path.style.strokeDashoffset = `${length}`; // Initially hide the path
                 path.style.transition = 'stroke-dashoffset 2s ease-in-out'; // Add animation
-                path.style.stroke = '#2563eb'; // Set stroke color (blue)
+                path.style.stroke = '#2563lb'; // Set stroke color (blue)
                 path.style.fill = 'none'; // Optional: Set fill to none if you only want the stroke
 
                 // Trigger animation after a short delay

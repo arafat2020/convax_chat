@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server"
 import { fetchQuery, fetchMutation } from "convex/nextjs";
 
 export default async function getOrCreateUserProfile() {
-    const { userId } = await auth()
+    const { userId, } = await auth()
     if (!userId) throw new Error("Something Went Wrong")
     const isExist = await fetchQuery(api.userProfile.getProfile, {
       clerkId: userId

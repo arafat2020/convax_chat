@@ -7,7 +7,7 @@ export default function Loading() {
           <div className="w-16 h-16 border-4 border-t-transparent border-blue-500 rounded-full animate-spin"></div>
         </div>
         <h1 className="mt-6 text-lg font-semibold text-gray-300">
-          Getting things ready...
+          Verifying User
         </h1>
       </div>
     </div>

@@ -8,7 +8,7 @@ export const createServer = mutation({
         ownerId: v.id("userProfile"),
         avatar: v.string(),
         inviteCode: v.string(),
-        member: v.array(v.id("member")),
+        member: v.optional(v.array(v.id("member"))),
         channel: v.optional(v.array(v.id("channel"))),
         createdAt: v.string(),
         updatedAt: v.string()
@@ -20,9 +20,9 @@ export const createServer = mutation({
 
 export const getServerForUser = query({
     args:{
-        userId: v.string()
+        userId: v.id("userProfile")
     },
     handler(ctx, {userId}) {
-        return ctx.db.query("server").filter(q=>q.eq(q.field("ownerId"), userId))
+        return ctx.db.query("server").filter(q=>q.eq(q.field("ownerId"), userId)).collect()
     },
 })

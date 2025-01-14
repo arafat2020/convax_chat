@@ -7,7 +7,7 @@ export const server = defineTable({
     ownerId: v.id("userProfile"),
     avatar: v.string(),
     inviteCode: v.string(),
-    member: v.array(v.id("member")),
+    member: v.optional(v.array(v.id("member"))),
     channel: v.optional(v.array(v.id("channel"))),
     createdAt: v.string(),
     updatedAt: v.string()
